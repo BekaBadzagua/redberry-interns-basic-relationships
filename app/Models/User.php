@@ -12,7 +12,7 @@ class User extends Authenticatable
 
 	protected $guarded = ['id'];
 
-	protected $with = ['phone'];
+	protected $with = ['phone', 'roles'];
 
 	/**
 	 * Get the phone associated with the user.
@@ -24,7 +24,17 @@ class User extends Authenticatable
 		* So the code below is the same as the following one:
 		*
 		* return $this->hasOne(Phone::class, 'user_id', 'id');
+		*
+		* read more in documentation: https://laravel.com/docs/9.x/eloquent-relationships#one-to-one
 		*/
 		return $this->hasOne(Phone::class);
+	}
+
+	/**
+	 * The roles that belong to the user.
+	 */
+	public function roles()
+	{
+		return $this->belongsToMany(Role::class);
 	}
 }

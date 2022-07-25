@@ -9,7 +9,7 @@ class UserController extends Controller
 {
 	public function index(): JsonResponse
 	{
-		$users = User::without('phone')->get();
+		$users = User::without(['phone', 'roles'])->get();
 		return response()->json($users, 200);
 	}
 
@@ -21,5 +21,9 @@ class UserController extends Controller
 	public function phone(User $user): JsonResponse
 	{
 		return response()->json($user->phone, 200);
+	}
+	public function roles(User $user): JsonResponse
+	{
+		return response()->json($user->roles, 200);
 	}
 }
