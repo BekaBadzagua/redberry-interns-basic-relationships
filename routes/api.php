@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,10 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('users', [UserController::class, 'index'])->name('users.index');
-Route::get('users/{user}', [UserController::class, 'get'])->name('users.get');
-Route::get('users/{user}/phone', [UserController::class, 'phone'])->name('users.phone');
+Route::controller(UserController::class)->group(function () {
+	Route::get('users', 'index')->name('users.index');
+	Route::get('users/{user}', 'get')->name('users.get');
+	Route::get('users/{user}/phone', 'phone')->name('users.phone');
+});
 
-Route::get('posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('posts/{post}', [PostController::class, 'get'])->name('posts.get');
-Route::get('posts/{post}/comments', [PostController::class, 'comments'])->name('posts.comments');
+Route::controller(UserController::class)->group(function () {
+	Route::get('posts', 'index')->name('posts.index');
+	Route::get('posts/{post}', 'get')->name('posts.get');
+	Route::get('posts/{post}/comments', 'comments')->name('posts.comments');
+});
