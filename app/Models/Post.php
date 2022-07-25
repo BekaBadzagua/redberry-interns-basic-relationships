@@ -11,6 +11,8 @@ class Post extends Model
 
 	protected $guarded = ['id'];
 
+	protected $with = ['comments'];
+
 	/**
 	 * Get the comments for the blog post.
 	 */
