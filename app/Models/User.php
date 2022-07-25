@@ -12,6 +12,8 @@ class User extends Authenticatable
 
 	protected $guarded = ['id'];
 
+	protected $with = ['phone'];
+
 	/**
 	 * Get the phone associated with the user.
 	 */

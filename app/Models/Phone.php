@@ -18,11 +18,11 @@ class Phone extends Model
 	{
 		/*
 		* belongsTo Vs hasMany
-        *
+		*
 		* belongsTo - is used with the table that contains Foreign Key.
 		* hasMany - is use with the table that does NOT contain Foreign Key.
-        *
-        * in this case phones table has user_id Foreign Key. so we use belongsTo.
+		*
+		* in this case phones table has user_id Foreign Key. so we use belongsTo.
 		*/
 		return $this->belongsTo(User::class);
 	}
